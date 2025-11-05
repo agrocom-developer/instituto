@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Language;
 use Illuminate\Database\Seeder;
 
@@ -17,14 +17,22 @@ class LanguageSeeder extends Seeder
     {
         DB::table('languages')->delete();
         
-        $languages = Language::create([
-
+        // English Language
+        Language::create([
             'name'=>'English',
             'code'=>'en',
             'direction'=>'0',
             'default'=>'1',
             'status'=>'1',
-            
+        ]);
+        
+        // Spanish Language
+        Language::create([
+            'name'=>'Español',
+            'code'=>'es',
+            'direction'=>'0',
+            'default'=>'0',
+            'status'=>'1',
         ]);
     }
 }

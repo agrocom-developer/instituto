@@ -48,6 +48,29 @@
                     <div class="col-sm-8 text-center">
                         <h2>{{ $applicationSetting->title }}</h2>
                         <p>{!! strip_tags($applicationSetting->body, '<br><b><i><strong><u><a><span><del>') !!}</p>
+                        {{-- Language Selector --}}
+                        @if(isset($user_languages) && $user_languages->count() > 1)
+                        <div class="mt-3">
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-language"></i> 
+                                    @php 
+                                    $version = App\Models\Language::version(); 
+                                    @endphp
+                                    {{ $version->name ?? __('module_language') }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                    @foreach($user_languages as $user_language)
+                                    <li>
+                                        <a class="dropdown-item @if(\Session()->get('locale') == $user_language->code || (!\Session()->has('locale') && $user_language->default == 1)) active @endif" href="{{ route('version', $user_language->code) }}">
+                                            {{ $user_language->name }}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="col-sm-2">
                         <div class="inner text-center">
