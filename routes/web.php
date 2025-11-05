@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,9 +73,9 @@ Route::middleware(['XSS'])->group(function () {
 // Set Lang Version
 Route::get('locale/language/{locale}', function ($locale){
 
-    \Session::put('locale', $locale);
+    Session::put('locale', $locale);
 
-    \App::setLocale($locale);
+    App::setLocale($locale);
 
     return redirect()->back();
     
