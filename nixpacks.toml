@@ -1,0 +1,14 @@
+[phases.setup]
+nixPkgs = ["nginx", "php83", "php83Packages.composer", "php83Extensions.pdo", "php83Extensions.pdo_mysql", "php83Extensions.mbstring"]
+
+[phases.install]
+cmds = [
+    "composer install --no-dev --optimize-autoloader --no-interaction",
+    "php artisan config:clear",
+    "php artisan route:clear",
+    "php artisan view:clear",
+    "php artisan cache:clear"
+]
+
+[start]
+cmd = "php-fpm -D && nginx -c /app/nginx.conf"
