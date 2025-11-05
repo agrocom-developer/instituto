@@ -1,0 +1,54 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+/.fleet
+/.idea
+/.vscode
+
+# Compiled assets
+/public/mix-manifest.json
+/public/build
+mix-manifest.json
+
+# Compiled class file
+/compiled.php
+
+# Logs
+/storage/logs/*.log
+npm-debug.log
+yarn-error.log
+
+# Debugbar
+/storage/debugbar
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
