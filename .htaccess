@@ -1,3 +1,7 @@
+# Forzar PHP 8.4.13 (si está disponible en MAMP)
+# Si MAMP tiene PHP 8.4.13, descomenta la siguiente línea:
+# AddHandler application/x-httpd-php84 .php
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
@@ -14,14 +18,8 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Handle Front Controller...
+    # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-
-
-<Files .env>
-    order allow,deny
-    Deny from all
-</Files>

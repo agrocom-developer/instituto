@@ -300,7 +300,7 @@ El sistema genera reportes detallados en múltiples áreas:
 ## 💻 Requisitos del Sistema
 
 ### Servidor
-- **PHP**: >= 8.0.1
+- **PHP**: >= 8.3.14 (Recomendado: 8.3.14)
 - **Composer**: >= 2.0
 - **Base de Datos**: MySQL 5.7+ / MariaDB 10.3+
 - **Servidor Web**: Apache / Nginx
@@ -316,9 +316,11 @@ El sistema genera reportes detallados en múltiples áreas:
   - Fileinfo
 
 ### Para Desarrollo Local (MAMP)
-- **MAMP** o **XAMPP** con PHP 8.0+
+- **MAMP** o **XAMPP** con PHP 8.3.14+
 - MySQL/MariaDB en puerto 8889 (MAMP)
 - Node.js y NPM (para assets frontend)
+
+**Nota**: Este proyecto está configurado para usar PHP 8.3.14. Asegúrate de que tu servidor web (MAMP) esté configurado para usar esta versión.
 
 ## 🚀 Instalación
 
