@@ -17,4 +17,4 @@ cmds = [
 ]
 
 [start]
-cmd = "php-fpm -D && nginx -c /app/nginx.conf"
+cmd = "php-fpm -y /app/php-fpm.conf & nginx -c /app/nginx.conf"
