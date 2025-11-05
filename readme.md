@@ -501,4 +501,4 @@ Para soporte técnico o consultas, por favor contacta al equipo de desarrollo:
 
 ---
 
-**Desarrollado con ❤️ por [Miguel Angel](https://github.com/Angello-27) usando Laravel**
+**Desarrollado por [Miguel Angel](https://github.com/Angello-27) usando Laravel**
