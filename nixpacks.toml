@@ -2,4 +2,4 @@
 cmds = []
 
 [start]
-cmd = "sed -i 's|try_files $uri $uri/ =404;|try_files $uri $uri/ /index.php?$query_string;|g' /nginx.conf && node /assets/scripts/prestart.mjs /assets/nginx.template.conf /nginx.conf && (php-fpm -y /assets/php-fpm.conf & nginx -c /nginx.conf)"
+cmd = "node /assets/scripts/prestart.mjs /assets/nginx.template.conf /nginx.conf && sed -i 's|try_files $uri $uri/ =404;|try_files $uri $uri/ /index.php?$query_string;|g' /nginx.conf && (php-fpm -y /assets/php-fpm.conf & nginx -c /nginx.conf)"
