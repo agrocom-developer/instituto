@@ -139,7 +139,7 @@ Route::middleware(['auth:web', 'XSS', 'license'])->name('admin.')->namespace('Ad
 
     // Dashboard Route
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('dashboard', 'DashboardController@index');
 
 
 
@@ -562,7 +562,7 @@ Route::middleware(['auth:student', 'XSS'])->prefix('student')->name('student.')-
 
     // Dashboard Route
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('dashboard', 'DashboardController@index');
 
     // Transcript Routes
     Route::get('transcript', 'TranscriptController@index')->name('transcript.index');
