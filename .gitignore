@@ -13,10 +13,10 @@ Homestead.yaml
 /.idea
 /.vscode
 
-# Compiled assets - COMENTADAS PARA SUBIR ASSETS
-# /public/mix-manifest.json
-# /public/build
-# mix-manifest.json
+# Compiled assets
+/public/mix-manifest.json
+/public/build
+mix-manifest.json
 
 # Compiled class file
 /compiled.php
