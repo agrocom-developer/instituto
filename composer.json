@@ -35,6 +35,9 @@
         "vonage/client": "^4.0",
         "yoeunes/toastr": "^1.2"
     },
+    "conflict": {
+        "maennchen/zipstream-php": ">=3.2"
+    },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
