@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3.14",
+        "php": "^8.2.29",
         "africastalking/africastalking": "^3.0",
         "bigbharatjain/laravel-clickatell": "^1.0",
         "doctrine/dbal": "^3.5",
