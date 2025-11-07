@@ -1,9 +1,15 @@
+    @php
+        $enablePcoded = $enablePcoded ?? true;
+    @endphp
+
     <!-- Required Js -->
     <script src="{{ asset('dashboard/plugins/jquery/js/jquery.min.js') }}"></script>
     <script src="{{ asset('dashboard/plugins/popper/js/popper.min.js') }}"></script>
     <script src="{{ asset('dashboard/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('dashboard/plugins/jquery-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('dashboard/js/pcoded.min.js') }}"></script>
+    @if($enablePcoded)
+        <script src="{{ asset('dashboard/plugins/jquery-scrollbar/js/perfect-scrollbar.min.js') }}"></script>
+        <script src="{{ asset('dashboard/js/pcoded.min.js') }}"></script>
+    @endif
 
     <!-- datatable Js -->
     <script src="{{ asset('dashboard/plugins/data-tables/js/datatables.min.js') }}"></script>
@@ -30,22 +36,33 @@
     @toastr_render
 
     <script type="text/javascript">
-        @if($errors->any())
-            @foreach($errors->all() as $error)
-                toastr["error"]("{{ $error }}");
-            @endforeach
-        @endif
+        (function () {
+            "use strict";
+            if (typeof toastr === 'undefined') {
+                return;
+            }
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    toastr["error"]("{{ $error }}");
+                @endforeach
+            @endif
+        })();
     </script>
 
     <!-- Print Js -->
     <script src="{{ asset('dashboard/plugins/print/js/jQuery.print.min.js') }}"></script>
     <script type="text/javascript">
-    $(function() {
-      "use strict";
-      $("html").find('.btn-print').on('click', function() {
-        $.print(".printable");
-      });
-    });
+    (function () {
+        "use strict";
+        if (typeof window.jQuery === 'undefined' || typeof jQuery.fn.print === 'undefined') {
+            return;
+        }
+        jQuery(function ($) {
+            $("html").find('.btn-print').on('click', function () {
+                $.print(".printable");
+            });
+        });
+    })();
     </script>
 
     <!-- Popup Window Js -->
@@ -66,158 +83,186 @@
 
     <script type="text/javascript">
         'use strict';
-        $(document).ready(function() {
-            // [ Single Select ] start
-            $(".select2").select2();
+        if (typeof window.jQuery !== 'undefined') {
+            jQuery(function ($) {
+                // [ Single Select ] start
+                if ($.fn.select2) {
+                    $(".select2").select2();
 
-            // [ Multi Select ] start
-            $(".select2-multiple").select2({
-                placeholder: "{{ __('select') }}"
-            });
+                    // [ Multi Select ] start
+                    $(".select2-multiple").select2({
+                        placeholder: "{{ __('select') }}"
+                    });
+                }
 
-            // Date Picker
-            $('.date').bootstrapMaterialDatePicker({
-                setDate: new Date(),
-                weekStart: 0,
-                time: false
-            });
+                // Date Picker
+                if ($.fn.bootstrapMaterialDatePicker) {
+                    $('.date').bootstrapMaterialDatePicker({
+                        setDate: new Date(),
+                        weekStart: 0,
+                        time: false
+                    });
 
-            // Time Picker
-            $('.time').bootstrapMaterialDatePicker({
-                date: false,
-                shortTime: true,
-                format: 'HH:mm'
-            });
+                    // Time Picker
+                    $('.time').bootstrapMaterialDatePicker({
+                        date: false,
+                        shortTime: true,
+                        format: 'HH:mm'
+                    });
+                }
 
-            // Color Picker
-            $('.color_picker').each(function() {
-                $(this).minicolors({
-                    control: $(this).attr('data-control') || 'hue',
-                    defaultValue: $(this).attr('data-defaultValue') || '',
-                    format: $(this).attr('data-format') || 'hex',
-                    keywords: $(this).attr('data-keywords') || '',
-                    inline: $(this).attr('data-inline') === 'true',
-                    letterCase: $(this).attr('data-letterCase') || 'lowercase',
-                    opacity: $(this).attr('data-opacity'),
-                    position: $(this).attr('data-position') || 'bottom',
-                    swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
-                    change: function(value, opacity) {
-                        if (!value) return;
-                        if (opacity) value += ', ' + opacity;
-                        if (typeof console === 'object') {
-                        }
-                    },
-                    theme: 'bootstrap'
-                });
-            });
+                // Color Picker
+                if ($.fn.minicolors) {
+                    $('.color_picker').each(function() {
+                        $(this).minicolors({
+                            control: $(this).attr('data-control') || 'hue',
+                            defaultValue: $(this).attr('data-defaultValue') || '',
+                            format: $(this).attr('data-format') || 'hex',
+                            keywords: $(this).attr('data-keywords') || '',
+                            inline: $(this).attr('data-inline') === 'true',
+                            letterCase: $(this).attr('data-letterCase') || 'lowercase',
+                            opacity: $(this).attr('data-opacity'),
+                            position: $(this).attr('data-position') || 'bottom',
+                            swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+                            change: function(value, opacity) {
+                                if (!value) return;
+                                if (opacity) value += ', ' + opacity;
+                            },
+                            theme: 'bootstrap'
+                        });
+                    });
+                }
 
-            // Number Musk
-            // $('.autonumber').autoNumeric('init');
-            new AutoNumeric('.autonumber', {
-                minimumValue : '0',
-                maximumValue : '999999999',
-                decimalPlaces : 0,
-                decimalCharacter : '.',
-                digitGroupSeparator : '',
+                // Number Mask
+                if (typeof AutoNumeric !== 'undefined') {
+                    var autoNumberFields = document.querySelectorAll('.autonumber');
+                    if (autoNumberFields.length) {
+                        Array.prototype.forEach.call(autoNumberFields, function(field) {
+                            new AutoNumeric(field, {
+                                minimumValue : '0',
+                                maximumValue : '999999999',
+                                decimalPlaces : 0,
+                                decimalCharacter : '.',
+                                digitGroupSeparator : '',
+                            });
+                        });
+                    }
+                }
             });
-        });
+        }
     </script>
 
     <script type="text/javascript">
         'use strict';
-        $(document).ready(function() {
-            // [ Zero-configuration ] start
-            $('#basic-table').DataTable();
-            $('#basic-table2').DataTable();
+        if (typeof window.jQuery !== 'undefined') {
+            jQuery(function ($) {
+                if (typeof $.fn.DataTable !== 'function') {
+                    return;
+                }
 
-            // [ HTML5-Export ] start
-            $('#export-table').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'copyHtml5',
-                        text: '<i class="fas fa-copy"></i>',
-                        footer: true,
-                        exportOptions: {
-                            columns: ':not(:last-child)',
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        text: '<i class="fas fa-file-excel"></i>',
-                        footer: true,
-                        exportOptions: {
-                            columns: ':not(:last-child)',
-                        }
-                    },
-                    {
-                        extend: 'csvHtml5',
-                        text: '<i class="fas fa-file"></i>',
-                        footer: true,
-                        exportOptions: {
-                            columns: ':not(:last-child)',
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        text: '<i class="fas fa-file-pdf"></i>',
-                        footer: true,
-                        exportOptions: {
-                            columns: ':not(:last-child)',
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="fas fa-print"></i>',
-                        autoPrint: true,
-                        // title: '',
-                        footer: true,
-                        exportOptions: {
-                            columns: ':not(:last-child)',
-                        },
-                        customize: function ( win ) {
-                            $(win.document.body)
-                                .css( 'font-size', '10pt' )
-                                /*.prepend(
-                                    '<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
-                                );*/
-         
-                            $(win.document.body).find( 'table' )
-                                .addClass( 'compact' )
-                                .css( 'font-size', 'inherit' );
+                var basicTable = $('#basic-table');
+                if (basicTable.length) {
+                    basicTable.DataTable();
+                }
 
-                            $(win.document.body).find( 'caption' )
-                                .css( 'font-size', '10px' );
+                var basicTable2 = $('#basic-table2');
+                if (basicTable2.length) {
+                    basicTable2.DataTable();
+                }
 
-                            $(win.document.body).find('h1')
-                                .css({"text-align": "center", "font-size": "16pt"});
-                        }
-                    }
-                ]
+                var exportTable = $('#export-table');
+                if (exportTable.length) {
+                    exportTable.DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'copyHtml5',
+                                text: '<i class="fas fa-copy"></i>',
+                                footer: true,
+                                exportOptions: {
+                                    columns: ':not(:last-child)',
+                                }
+                            },
+                            {
+                                extend: 'excelHtml5',
+                                text: '<i class="fas fa-file-excel"></i>',
+                                footer: true,
+                                exportOptions: {
+                                    columns: ':not(:last-child)',
+                                }
+                            },
+                            {
+                                extend: 'csvHtml5',
+                                text: '<i class="fas fa-file"></i>',
+                                footer: true,
+                                exportOptions: {
+                                    columns: ':not(:last-child)',
+                                }
+                            },
+                            {
+                                extend: 'pdfHtml5',
+                                text: '<i class="fas fa-file-pdf"></i>',
+                                footer: true,
+                                exportOptions: {
+                                    columns: ':not(:last-child)',
+                                }
+                            },
+                            {
+                                extend: 'print',
+                                text: '<i class="fas fa-print"></i>',
+                                autoPrint: true,
+                                footer: true,
+                                exportOptions: {
+                                    columns: ':not(:last-child)',
+                                },
+                                customize: function ( win ) {
+                                    $(win.document.body)
+                                        .css( 'font-size', '10pt' );
+
+                                    $(win.document.body).find( 'table' )
+                                        .addClass( 'compact' )
+                                        .css( 'font-size', 'inherit' );
+
+                                    $(win.document.body).find( 'caption' )
+                                        .css( 'font-size', '10px' );
+
+                                    $(win.document.body).find('h1')
+                                        .css({"text-align": "center", "font-size": "16pt"});
+                                }
+                            }
+                        ]
+                    });
+                }
             });
-        });
+        }
     </script>
 
     {{-- Set Cookie --}}
     <script type="text/javascript">
         "use strict";
-        $(document).ready(function(){
-            $("#mobile-collapse").on( "click", function(e) {
-               e.preventDefault();
-               $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                  }
-              });
-            $.ajax({
-               url: "{{ route('setCookie') }}",
-               method: 'get',
-               data: {},
-               success: function(result){
-                  console.log(result.data);
-               }});
+        if (typeof window.jQuery !== 'undefined') {
+            jQuery(function ($) {
+                var $mobileCollapse = $("#mobile-collapse");
+                if (!$mobileCollapse.length) {
+                    return;
+                }
+                $mobileCollapse.on( "click", function(e) {
+                   e.preventDefault();
+                   $.ajaxSetup({
+                      headers: {
+                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                      }
+                  });
+                    $.ajax({
+                       url: "{{ route('setCookie') }}",
+                       method: 'get',
+                       data: {},
+                       success: function(result){
+                          console.log(result.data);
+                       }});
+                });
             });
-        });
+        }
     </script>
 
 

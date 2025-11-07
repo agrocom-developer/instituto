@@ -30,34 +30,56 @@
 
 
 <script type="text/javascript">
-"use strict";
-$("#present_province").on('change',function(e){
-    e.preventDefault();
-    var presentDistrict=$("#present_district");
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    $.ajax({
-      type:'POST',
-      url: "{{ route('filter-district') }}",
-      data:{
-        _token:$('input[name=_token]').val(),
-        province:$(this).val()
-      },
-      success:function(response){
-          // var jsonData=JSON.parse(response);
-          $('option', presentDistrict).remove();
-          $('#present_district').append('<option value="">{{ __("select") }}</option>');
-          $.each(response, function(){
-            $('<option/>', {
-              'value': this.id,
-              'text': this.title
-            }).appendTo('#present_district');
-          });
+(function() {
+    "use strict";
+
+    var initHandler = function () {
+        if (typeof window.jQuery === 'undefined') {
+            window.setTimeout(initHandler, 50);
+            return;
         }
 
-    });
-  });
+        var $ = window.jQuery;
+        $(document).ready(function () {
+            var $province = $('#present_province');
+            if (!$province.length) {
+                return;
+            }
+
+            $province.on('change', function (e) {
+                e.preventDefault();
+                var $presentDistrict = $('#present_district');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('filter-district') }}",
+                    data: {
+                        _token: $('input[name=_token]').val(),
+                        province: $(this).val()
+                    },
+                    success: function (response) {
+                        $('option', $presentDistrict).remove();
+                        $presentDistrict.append('<option value="">{{ __("select") }}</option>');
+                        $.each(response, function () {
+                            $('<option/>', {
+                                'value': this.id,
+                                'text': this.title
+                            }).appendTo($presentDistrict);
+                        });
+                    }
+                });
+            });
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHandler);
+    } else {
+        initHandler();
+    }
+})();
 </script>

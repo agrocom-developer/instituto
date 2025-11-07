@@ -30,34 +30,56 @@
 
 
 <script type="text/javascript">
-"use strict";
-$("#permanent_province").on('change',function(e){
-    e.preventDefault();
-    var permanentDistrict=$("#permanent_district");
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    $.ajax({
-      type:'POST',
-      url: "{{ route('filter-district') }}",
-      data:{
-        _token:$('input[name=_token]').val(),
-        province:$(this).val()
-      },
-      success:function(response){
-          // var jsonData=JSON.parse(response);
-          $('option', permanentDistrict).remove();
-          $('#permanent_district').append('<option value="">{{ __("select") }}</option>');
-          $.each(response, function(){
-            $('<option/>', {
-              'value': this.id,
-              'text': this.title
-            }).appendTo('#permanent_district');
-          });
+(function() {
+    "use strict";
+
+    var initHandler = function () {
+        if (typeof window.jQuery === 'undefined') {
+            window.setTimeout(initHandler, 50);
+            return;
         }
 
-    });
-  });
+        var $ = window.jQuery;
+        $(document).ready(function () {
+            var $province = $('#permanent_province');
+            if (!$province.length) {
+                return;
+            }
+
+            $province.on('change', function (e) {
+                e.preventDefault();
+                var $permanentDistrict = $('#permanent_district');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('filter-district') }}",
+                    data: {
+                        _token: $('input[name=_token]').val(),
+                        province: $(this).val()
+                    },
+                    success: function (response) {
+                        $('option', $permanentDistrict).remove();
+                        $permanentDistrict.append('<option value="">{{ __("select") }}</option>');
+                        $.each(response, function () {
+                            $('<option/>', {
+                                'value': this.id,
+                                'text': this.title
+                            }).appendTo($permanentDistrict);
+                        });
+                    }
+                });
+            });
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHandler);
+    } else {
+        initHandler();
+    }
+})();
 </script>
