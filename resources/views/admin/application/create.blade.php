@@ -570,7 +570,7 @@
 @endisset
 
     
-    @include('admin.layouts.common.footer_script')
+    @include('admin.layouts.common.footer_script', ['enablePcoded' => false])
 
 
     <!-- validate Js -->
