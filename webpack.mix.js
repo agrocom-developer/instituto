@@ -22,7 +22,6 @@ mix.styles([
 ], 'public/css/web-all.css');
 
 mix.scripts([
-    // 'public/web/js/jquery.js',
     'public/web/js/popper.min.js',
     'public/web/js/bootstrap.min.js',
     'public/web/js/appear.js',
