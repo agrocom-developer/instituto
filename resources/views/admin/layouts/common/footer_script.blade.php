@@ -41,11 +41,15 @@
             if (typeof toastr === 'undefined') {
                 return;
             }
-            @if($errors->any())
-                @foreach($errors->all() as $error)
-                    toastr["error"]("{{ $error }}");
-                @endforeach
-            @endif
+
+            var formErrors = <?php echo Illuminate\Support\Js::from($errors->any() ? $errors->all() : []); ?>;
+            if (!Array.isArray(formErrors)) {
+                return;
+            }
+
+            formErrors.forEach(function (message) {
+                toastr["error"](message);
+            });
         })();
     </script>
 

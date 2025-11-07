@@ -10,12 +10,33 @@ use App\Models\Application;
 use App\Models\Province;
 use App\Models\Program;
 use Carbon\Carbon;
-use Toastr;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
 {
     use FileUploader;
+
+    /**
+     * Shared view metadata for the application form.
+     *
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * @var string
+     */
+    protected $route;
+
+    /**
+     * @var string
+     */
+    protected $view;
+
+    /**
+     * @var string
+     */
+    protected $path;
     
     /**
      * Create a new controller instance.
@@ -137,15 +158,11 @@ class ApplicationController extends Controller
             DB::commit();
 
 
-            Toastr::success(__('msg_sent_successfully'), __('msg_success'));
-
             return redirect()->route($this->route.'.index')->with('success', __('msg_sent_successfully'));
         }
         catch(\Exception $e){
 
-            Toastr::error(__('msg_created_error'), __('msg_error'));
-
-            return redirect()->back();
+            return redirect()->back()->with('error', __('msg_created_error'));
         }
     }
 }
