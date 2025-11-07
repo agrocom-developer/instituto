@@ -38,9 +38,9 @@ require __DIR__.'/vendor/autoload.php';
 $app = require_once __DIR__.'/bootstrap/app.php';
 
 
-// set the public path to this directory
-$app->bind('path.public', function() {
-    return __DIR__;
+// Establecer la ruta pública en la carpeta "public"
+$app->bind('path.public', function () {
+    return __DIR__ . '/public';
 });
 
 /*
