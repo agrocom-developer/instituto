@@ -184,6 +184,8 @@ Route::middleware(['auth:web', 'XSS', 'license'])->name('admin.')->namespace('Ad
     Route::resource('student/group-enroll', 'StudentGroupEnrollController');
     Route::resource('student/academic-transition', 'AcademicTransitionController');
     Route::post('student/academic-transition/{id}/status', 'AcademicTransitionController@status')->name('academic-transition.status');
+    Route::resource('student/tutorial', 'TutorialController');
+    Route::post('student/tutorial/{id}/status', 'TutorialController@status')->name('tutorial.status');
     Route::resource('student/subject-adddrop', 'SubjectAddDropController');
     Route::resource('student/course-complete', 'CourseCompleteController');
     Route::resource('student/student-alumni', 'StudentAlumniController');
