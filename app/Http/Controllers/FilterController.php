@@ -8,10 +8,9 @@ use App\Models\Session;
 use App\Models\Program;
 use App\Models\Subject;
 use App\Models\Section;
-use Carbon\Carbon;
 use App\User;
-use Auth;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FilterController extends Controller
 {

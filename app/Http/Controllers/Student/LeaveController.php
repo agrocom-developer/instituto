@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\StudentLeave;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
 {

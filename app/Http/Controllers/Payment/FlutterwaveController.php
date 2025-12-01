@@ -9,9 +9,9 @@ use App\Models\PrintSetting;
 use App\Traits\FeesStudent;
 use App\Models\Setting;
 use App\Models\Fee;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FlutterwaveController extends Controller
 {

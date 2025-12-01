@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\FeesCategory;
 use Illuminate\Database\Seeder;
 

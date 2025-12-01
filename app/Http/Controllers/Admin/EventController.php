@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use Carbon\Carbon;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class EventController extends Controller
 {

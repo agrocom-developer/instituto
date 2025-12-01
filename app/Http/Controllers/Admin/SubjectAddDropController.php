@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Grade;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class SubjectAddDropController extends Controller
 {

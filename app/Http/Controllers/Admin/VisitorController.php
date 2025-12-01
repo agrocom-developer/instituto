@@ -10,8 +10,8 @@ use App\Models\PrintSetting;
 use App\Models\Department;
 use App\Models\Visitor;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class VisitorController extends Controller
 {

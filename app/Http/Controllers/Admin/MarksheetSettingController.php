@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MarksheetSetting;
 use Illuminate\Http\Request;
 use App\Traits\FileUploader;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class MarksheetSettingController extends Controller
 {

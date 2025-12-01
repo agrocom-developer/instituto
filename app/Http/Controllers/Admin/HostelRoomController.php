@@ -7,7 +7,7 @@ use App\Models\HostelRoomType;
 use Illuminate\Http\Request;
 use App\Models\HostelRoom;
 use App\Models\Hostel;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class HostelRoomController extends Controller
 {

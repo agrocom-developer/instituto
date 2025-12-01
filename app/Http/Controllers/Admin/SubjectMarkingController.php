@@ -14,13 +14,11 @@ use App\Models\Faculty;
 use App\Models\Program;
 use App\Models\Session;
 use App\Models\Section;
-use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Grade;
-use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class SubjectMarkingController extends Controller
 {

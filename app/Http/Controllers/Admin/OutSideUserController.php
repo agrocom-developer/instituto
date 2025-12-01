@@ -11,9 +11,9 @@ use App\Models\OutsideUser;
 use App\Models\Province;
 use App\Models\District;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OutSideUserController extends Controller
 {

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Program;
 use App\Models\Faculty;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ProgramController extends Controller
 {

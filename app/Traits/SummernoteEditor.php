@@ -3,8 +3,8 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
-use Image;
-use File;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 trait SummernoteEditor {
 

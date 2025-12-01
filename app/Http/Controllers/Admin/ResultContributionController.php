@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ResultContribution;
 use Illuminate\Http\Request;
 use App\Models\ExamType;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ResultContributionController extends Controller
 {

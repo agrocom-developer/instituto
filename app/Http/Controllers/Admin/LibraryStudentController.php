@@ -13,8 +13,8 @@ use App\Models\Session;
 use App\Models\Faculty;
 use App\Models\Student;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class LibraryStudentController extends Controller
 {

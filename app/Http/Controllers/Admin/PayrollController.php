@@ -18,9 +18,9 @@ use App\Models\Department;
 use App\Models\Payroll;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PayrollController extends Controller
 {

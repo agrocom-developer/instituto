@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\ClassRoom;
 use App\Models\Program;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ClassRoomController extends Controller
 {

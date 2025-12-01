@@ -13,8 +13,8 @@ use App\Models\Faculty;
 use App\Models\Student;
 use App\Models\Hostel;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class HostelStudentController extends Controller
 {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\TransportRoute;
 use Illuminate\Http\Request;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class TransportRouteController extends Controller
 {

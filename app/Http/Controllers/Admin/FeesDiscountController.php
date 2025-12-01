@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\FeesCategory;
 use App\Models\FeesDiscount;
 use App\Models\StatusType;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class FeesDiscountController extends Controller
 {

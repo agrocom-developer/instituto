@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FeesCategory;
 use App\Models\FeesFine;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class FeesFineController extends Controller
 {

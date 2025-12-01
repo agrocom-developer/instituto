@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Web\SocialSetting;
 use Illuminate\Http\Request;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class SocialSettingController extends Controller
 {

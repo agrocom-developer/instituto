@@ -13,8 +13,8 @@ use App\Models\Department;
 use App\Models\Session;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class StaffHourlyAttendanceController extends Controller
 {

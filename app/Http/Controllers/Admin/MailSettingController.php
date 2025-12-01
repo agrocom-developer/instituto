@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Traits\EnvironmentVariable;
 use Illuminate\Http\Request;
 use App\Models\MailSetting;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class MailSettingController extends Controller
 {

@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Toastr;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\IssueReturn;
 use App\Models\Student;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class LibraryController extends Controller
 {

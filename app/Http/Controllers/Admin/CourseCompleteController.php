@@ -12,9 +12,9 @@ use App\Models\Section;
 use App\Models\Session;
 use App\Models\Student;
 use App\Models\Grade;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CourseCompleteController extends Controller
 {

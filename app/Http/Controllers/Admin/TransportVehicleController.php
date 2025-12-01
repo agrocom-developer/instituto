@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TransportVehicle;
 use App\Models\TransportRoute;
 use Illuminate\Http\Request;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class TransportVehicleController extends Controller
 {

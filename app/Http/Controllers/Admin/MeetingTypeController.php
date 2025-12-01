@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\MeetingType;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class MeetingTypeController extends Controller
 {

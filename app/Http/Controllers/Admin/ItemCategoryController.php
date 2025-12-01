@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ItemCategory;
 use Illuminate\Support\Str;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ItemCategoryController extends Controller
 {

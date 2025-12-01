@@ -19,11 +19,11 @@ use App\Models\Province;
 use App\Models\Document;
 use App\Models\Program;
 use App\User;
-use Toastr;
-use Hash;
-use Auth;
-use Mail;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {

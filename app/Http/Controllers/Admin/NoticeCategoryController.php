@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\NoticeCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class NoticeCategoryController extends Controller
 {

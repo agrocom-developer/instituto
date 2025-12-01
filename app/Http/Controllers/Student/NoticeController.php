@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Notice;
 use Carbon\Carbon;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class NoticeController extends Controller
 {

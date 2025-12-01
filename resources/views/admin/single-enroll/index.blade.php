@@ -263,9 +263,25 @@
                                 <select class="form-control next_section" name="section" id="section" required>
                                   <option value="">{{ __('select') }}</option>
                                   @foreach( $sections as $section )
-                                  <option value="{{ $section->id }}" @if( $enroll->section_id == $section->id) selected @endif>{{ $section->title }}</option>
+                                  <option value="{{ $section->id }}" @if( $enroll->section_id == $section->id) selected @endif
+                                    @if($section->available_seats >= 0 && $section->available_seats == 0) disabled @endif
+                                    data-available="{{ $section->available_seats }}" 
+                                    data-enrolled="{{ $section->enrolled_count }}" 
+                                    data-capacity="{{ $section->seat ?? '∞' }}"
+                                    data-percentage="{{ $section->capacity_percentage ?? 0 }}">
+                                    {{ $section->title }}
+                                    @if($section->seat !== null)
+                                      ({{ __('field_available_seats') }}: {{ $section->available_seats >= 0 ? $section->available_seats : '∞' }}/{{ $section->seat }})
+                                      @if($section->available_seats == 0)
+                                        - {{ __('msg_section_full') }}
+                                      @elseif($section->capacity_percentage !== null && $section->capacity_percentage >= 80)
+                                        - {{ __('field_nearly_full') }}
+                                      @endif
+                                    @endif
+                                  </option>
                                   @endforeach
                                 </select>
+                                <small class="form-text text-muted" id="section-capacity-info"></small>
 
                                 <div class="invalid-feedback">
                                   {{ __('required_field') }} {{ __('field_section') }}
@@ -347,6 +363,38 @@ $(".next_semester").on('change',function(e){
 $(".next_section").on('change',function(e){
   e.preventDefault(e);
   var subject=$(".next_subject");
+  var selectedOption = $(this).find('option:selected');
+  var availableSeats = selectedOption.data('available');
+  var enrolledCount = selectedOption.data('enrolled');
+  var capacity = selectedOption.data('capacity');
+  var percentage = selectedOption.data('percentage');
+  
+  // Show capacity information
+  var capacityInfo = $('#section-capacity-info');
+  if (capacity !== '∞' && capacity !== undefined) {
+    var infoText = '{{ __("field_enrolled") }}: ' + enrolledCount + ' / ' + capacity;
+    if (availableSeats >= 0) {
+      infoText += ' | {{ __("field_available_seats") }}: ' + availableSeats;
+    }
+    if (percentage !== undefined && percentage !== null) {
+      var badgeClass = percentage >= 90 ? 'badge-danger' : (percentage >= 80 ? 'badge-warning' : 'badge-success');
+      infoText += ' <span class="badge ' + badgeClass + '">' + percentage.toFixed(1) + '%</span>';
+    }
+    capacityInfo.html(infoText);
+    
+    // Show warning if nearly full or full
+    if (availableSeats === 0) {
+      capacityInfo.removeClass('text-muted').addClass('text-danger');
+    } else if (percentage >= 80) {
+      capacityInfo.removeClass('text-muted').addClass('text-warning');
+    } else {
+      capacityInfo.removeClass('text-danger text-warning').addClass('text-muted');
+    }
+  } else {
+    capacityInfo.html('{{ __("field_unlimited_capacity") }}');
+    capacityInfo.removeClass('text-danger text-warning').addClass('text-muted');
+  }
+  
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

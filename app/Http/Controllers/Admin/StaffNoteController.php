@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\Note;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class StaffNoteController extends Controller
 {

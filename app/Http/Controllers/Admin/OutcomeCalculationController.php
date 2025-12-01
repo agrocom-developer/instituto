@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\Income;
 use Carbon\Carbon;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class OutcomeCalculationController extends Controller
 {

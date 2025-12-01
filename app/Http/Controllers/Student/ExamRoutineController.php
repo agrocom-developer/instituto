@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\ExamRoutine;
 use App\Models\ExamType;
 use App\Models\Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ExamRoutineController extends Controller
 {

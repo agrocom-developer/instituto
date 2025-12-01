@@ -16,9 +16,9 @@ use App\Models\Program;
 use App\Models\Section;
 use App\Models\Fee;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FeesStudentController extends Controller
 {

@@ -27,12 +27,11 @@ use App\Models\Faculty;
 use App\Models\Batch;
 use App\Models\Grade;
 use App\Models\Fee;
-use Carbon\Carbon;
-use Toastr;
-use Auth;
-use Hash;
-use Mail;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {

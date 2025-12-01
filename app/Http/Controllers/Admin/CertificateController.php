@@ -11,7 +11,7 @@ use App\Models\Program;
 use App\Models\Session;
 use App\Models\Batch;
 use App\Models\Grade;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class CertificateController extends Controller
 {

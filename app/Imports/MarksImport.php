@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Exam;
 use App\Models\ExamType;
 use App\Models\StudentEnroll;

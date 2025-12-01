@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Models\District;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class DistrictController extends Controller
 {

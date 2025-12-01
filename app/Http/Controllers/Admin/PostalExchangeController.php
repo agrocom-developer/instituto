@@ -8,8 +8,8 @@ use App\Models\PostalExchange;
 use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class PostalExchangeController extends Controller
 {

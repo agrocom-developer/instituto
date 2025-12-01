@@ -10,8 +10,8 @@ use App\Models\Setting;
 use App\Models\Fee;
 use Stripe\Stripe;
 use Stripe\Charge;
-use Toastr;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class StripeController extends Controller
 {

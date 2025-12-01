@@ -8,7 +8,7 @@ use App\Traits\FileUploader;
 use Illuminate\Support\Str;
 use App\Models\Web\Course;
 use App\Models\Language;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class CourseController extends Controller
 {

@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Program;
 use App\Models\Subject;
 use App\Models\Faculty;
-use Toastr;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {

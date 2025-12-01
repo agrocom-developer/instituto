@@ -8,9 +8,9 @@ use App\Mail\ForgotPassword;
 use App\Models\MailSetting;
 use App\Models\Student;
 use Password;
-use Auth;
-use Mail;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class ForgotPasswordController extends Controller
 {

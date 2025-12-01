@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ScheduleSetting;
 use Illuminate\Http\Request;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ScheduleSettingController extends Controller
 {

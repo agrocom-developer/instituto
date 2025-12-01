@@ -7,10 +7,10 @@ use App\Models\BookCategory;
 use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\BookRequest;
-use Toastr;
-use Image;
-use File;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class BookRequestController extends Controller
 {

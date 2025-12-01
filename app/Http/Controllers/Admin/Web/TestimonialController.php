@@ -7,7 +7,7 @@ use App\Models\Web\Testimonial;
 use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\Language;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class TestimonialController extends Controller
 {

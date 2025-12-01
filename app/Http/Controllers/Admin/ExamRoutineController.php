@@ -15,9 +15,9 @@ use App\Models\Program;
 use App\Models\Section;
 use App\Models\Subject;
 use App\User;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ExamRoutineController extends Controller
 {

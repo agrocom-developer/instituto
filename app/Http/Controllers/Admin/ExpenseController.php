@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\Expense;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {

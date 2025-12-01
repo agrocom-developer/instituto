@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\FeesCategory;
 use App\Models\Student;
 use App\Models\Fee;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class FeesController extends Controller
 {

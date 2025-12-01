@@ -17,8 +17,8 @@ use App\Models\Subject;
 use App\Models\Faculty;
 use App\Models\Exam;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class ExamAttendanceController extends Controller
 {

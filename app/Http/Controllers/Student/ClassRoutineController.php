@@ -7,7 +7,7 @@ use App\Models\StudentEnroll;
 use Illuminate\Http\Request;
 use App\Models\ClassRoutine;
 use App\Models\Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ClassRoutineController extends Controller
 {

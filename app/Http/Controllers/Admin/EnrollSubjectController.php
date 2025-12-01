@@ -10,7 +10,7 @@ use App\Models\Program;
 use App\Models\Section;
 use App\Models\Subject;
 use App\Models\Faculty;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class EnrollSubjectController extends Controller
 {

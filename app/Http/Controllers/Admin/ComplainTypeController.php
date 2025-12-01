@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ComplainType;
 use Illuminate\Support\Str;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ComplainTypeController extends Controller
 {

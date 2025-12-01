@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Grade;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class TranscriptController extends Controller
 {

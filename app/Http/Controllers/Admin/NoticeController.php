@@ -12,9 +12,9 @@ use App\Models\Faculty;
 use App\Models\Student;
 use App\Models\Notice;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NoticeController extends Controller
 {

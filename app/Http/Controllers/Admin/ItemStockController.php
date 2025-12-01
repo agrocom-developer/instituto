@@ -10,8 +10,8 @@ use App\Models\ItemStock;
 use App\Models\ItemStore;
 use App\Models\Item;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class ItemStockController extends Controller
 {

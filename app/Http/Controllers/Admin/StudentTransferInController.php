@@ -19,11 +19,10 @@ use App\Models\Session;
 use App\Models\Subject;
 use App\Models\Student;
 use App\Models\Batch;
-use Carbon\Carbon;
-use Toastr;
-use Hash;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class StudentTransferInController extends Controller
 {

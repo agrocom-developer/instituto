@@ -8,7 +8,7 @@ use App\Models\StudentEnroll;
 use Illuminate\Http\Request;
 use App\Models\Session;
 use Carbon\Carbon;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {

@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;

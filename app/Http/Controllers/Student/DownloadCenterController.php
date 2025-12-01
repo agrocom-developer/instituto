@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Content;
 use Carbon\Carbon;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class DownloadCenterController extends Controller
 {

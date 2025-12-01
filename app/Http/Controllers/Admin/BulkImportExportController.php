@@ -15,7 +15,7 @@ use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use App\Exports\BooksExport;
 use App\Imports\BooksImport;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class BulkImportExportController extends Controller
 {

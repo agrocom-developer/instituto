@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\VisitPurpose;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class VisitPurposeController extends Controller
 {

@@ -10,8 +10,8 @@ use App\Models\Program;
 use App\Models\Enquiry;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class EnquiryController extends Controller
 {

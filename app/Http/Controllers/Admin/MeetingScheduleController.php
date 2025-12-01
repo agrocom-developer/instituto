@@ -9,8 +9,8 @@ use App\Traits\FileUploader;
 use App\Models\MeetingType;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class MeetingScheduleController extends Controller
 {

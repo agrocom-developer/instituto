@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Book;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;

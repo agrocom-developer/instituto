@@ -10,9 +10,9 @@ use App\Models\SMSSetting;
 use App\Models\SMSNotify;
 use App\Models\Faculty;
 use App\Models\Student;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SMSNotifyController extends Controller
 {

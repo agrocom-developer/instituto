@@ -7,8 +7,8 @@ use Illuminate\Support\Str;
 use App\Models\Transaction;
 use App\Models\Fee;
 use Carbon\Carbon;
-use Auth;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 trait FeesStudent {
 

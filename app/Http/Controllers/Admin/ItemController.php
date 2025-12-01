@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ItemCategory;
 use App\Traits\FileUploader;
 use App\Models\Item;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ItemController extends Controller
 {

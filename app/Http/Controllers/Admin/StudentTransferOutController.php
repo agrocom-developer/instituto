@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\StatusType;
 use App\Models\Student;
 use App\Models\Grade;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class StudentTransferOutController extends Controller
 {

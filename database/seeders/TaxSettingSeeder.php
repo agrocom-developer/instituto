@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\TaxSetting;
 use Illuminate\Database\Seeder;
 

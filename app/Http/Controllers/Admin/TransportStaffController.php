@@ -10,8 +10,8 @@ use App\Models\Designation;
 use App\Models\Department;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class TransportStaffController extends Controller
 {

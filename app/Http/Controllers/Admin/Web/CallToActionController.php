@@ -7,7 +7,7 @@ use App\Models\Web\CallToAction;
 use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\Language;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class CallToActionController extends Controller
 {

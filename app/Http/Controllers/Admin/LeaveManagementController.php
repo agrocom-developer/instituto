@@ -9,8 +9,8 @@ use App\Models\LeaveType;
 use App\Models\Leave;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveManagementController extends Controller
 {

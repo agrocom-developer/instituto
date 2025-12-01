@@ -17,8 +17,8 @@ use App\Models\Student;
 use App\Models\Subject;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class StudentAttendanceController extends Controller
 {

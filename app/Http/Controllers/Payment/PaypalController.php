@@ -9,8 +9,8 @@ use App\Models\PrintSetting;
 use App\Traits\FeesStudent;
 use App\Models\Setting;
 use App\Models\Fee;
-use Toastr;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class PaypalController extends Controller
 {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use App\Models\Web\Faq;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class FaqController extends Controller
 {

@@ -18,10 +18,10 @@ use App\Models\Program;
 use App\Models\Student;
 use App\Models\Batch;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
-use Hash;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
 {

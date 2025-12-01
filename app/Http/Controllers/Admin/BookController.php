@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 use App\Imports\BooksImport;
 use App\Traits\FileUploader;
 use App\Models\Book;
-use Toastr;
-use Image;
-use File;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {

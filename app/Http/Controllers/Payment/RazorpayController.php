@@ -9,8 +9,8 @@ use App\Models\Setting;
 use Razorpay\Api\Api;
 use App\Models\Fee;
 use Exception;
-use Toastr;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class RazorpayController extends Controller
 {

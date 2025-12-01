@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\PrintSetting;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class AdmitCardSettingController extends Controller
 {

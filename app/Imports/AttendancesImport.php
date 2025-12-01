@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\StudentEnroll;
 use App\Models\StudentAttendance;
 use Illuminate\Support\Collection;

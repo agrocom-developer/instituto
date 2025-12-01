@@ -23,9 +23,9 @@ use App\Models\Subject;
 use App\Models\Student;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
-use DB;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
 {

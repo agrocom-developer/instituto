@@ -8,8 +8,8 @@ use App\Traits\FileUploader;
 use App\Models\LeaveType;
 use App\Models\Leave;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
 {

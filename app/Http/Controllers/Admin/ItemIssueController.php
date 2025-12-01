@@ -10,8 +10,8 @@ use App\Models\ItemIssue;
 use App\Models\Item;
 use Carbon\Carbon;
 use App\User;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class ItemIssueController extends Controller
 {

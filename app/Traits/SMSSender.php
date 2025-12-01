@@ -2,25 +2,25 @@
 
 namespace App\Traits;
 
-use Illuminate\Http\Request;
 use App\Models\SMSSetting;
 use Twilio\Rest\Client;
-use Exception;
+use Vonage\Client as VonageClient;
+use Vonage\Client\Credentials\Basic;
 
 trait SMSSender {
 
     /**
-     * Sends sms to user using Twilio's programmable sms client
-     * @param String $message Body of sms
-     * @param Number $recipients string or array of phone number of recepient
+     * Sends sms to user using Vonage (formerly Nexmo) SMS client
+     * @param string $message Body of sms
+     * @param string|array $recipients string or array of phone number of recipient
      */
     public function nexmo($message, $recipients)
     {
         $sms = SMSSetting::first();
 
-        $basic  = new \Nexmo\Client\Credentials\Basic(getenv("NEXMO_KEY", $sms->nexmo_key), getenv("NEXMO_SECRET", $sms->nexmo_secret));
+        $basic  = new Basic(getenv("NEXMO_KEY", $sms->nexmo_key), getenv("NEXMO_SECRET", $sms->nexmo_secret));
 
-        $client = new \Nexmo\Client($basic);
+        $client = new VonageClient($basic);
 
         if($client == true){
         $message = $client->message()->send([
@@ -33,8 +33,8 @@ trait SMSSender {
 
     /**
      * Sends sms to user using Twilio's programmable sms client
-     * @param String $message Body of sms
-     * @param Number $recipients string or array of phone number of recepient
+     * @param string $message Body of sms
+     * @param string|array $recipients string or array of phone number of recipient
      */
     public function twilio($message, $recipients)
     {
@@ -56,9 +56,10 @@ trait SMSSender {
     }
 
     /**
-     * Sends sms to user using Twilio's programmable sms client
-     * @param String $message Body of sms
-     * @param Number $recipients string or array of phone number of recepient
+     * Sends sms to user using configured SMS gateway
+     * @param mixed $row Student enroll row
+     * @param string $message Body of sms
+     * @param string|array $recipients string or array of phone number of recipient
      */
     public function sender($row, $message, $recipients)
     {
@@ -107,9 +108,9 @@ trait SMSSender {
         }
         elseif($sms->status == 2){
 
-            $basic  = new \Nexmo\Client\Credentials\Basic(getenv("NEXMO_KEY", $sms->nexmo_key), getenv("NEXMO_SECRET", $sms->nexmo_secret));
+            $basic  = new Basic(getenv("NEXMO_KEY", $sms->nexmo_key), getenv("NEXMO_SECRET", $sms->nexmo_secret));
 
-            $client = new \Nexmo\Client($basic);
+            $client = new VonageClient($basic);
 
             if($client == true){
             $nexmo_message = $client->message()->send([

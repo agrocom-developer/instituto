@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\Web\Slider;
 use App\Models\Language;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class SliderController extends Controller
 {

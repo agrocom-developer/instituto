@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use App\Traits\FileUploader;
 use App\Models\Income;
 use Carbon\Carbon;
-use Toastr;
-use Auth;
+use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class IncomeController extends Controller
 {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\IdCardSetting;
 use Illuminate\Http\Request;
 use App\Traits\FileUploader;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class LibraryIdCardSettingController extends Controller
 {

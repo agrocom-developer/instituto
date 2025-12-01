@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ItemSupplier;
-use Toastr;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ItemSupplierController extends Controller
 {
