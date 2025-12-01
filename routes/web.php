@@ -186,6 +186,8 @@ Route::middleware(['auth:web', 'XSS', 'license'])->name('admin.')->namespace('Ad
     Route::post('student/academic-transition/{id}/status', 'AcademicTransitionController@status')->name('academic-transition.status');
     Route::resource('student/tutorial', 'TutorialController');
     Route::post('student/tutorial/{id}/status', 'TutorialController@status')->name('tutorial.status');
+    Route::resource('student/custom-request', 'CustomRequestController');
+    Route::post('student/custom-request/{id}/status', 'CustomRequestController@status')->name('custom-request.status');
     Route::resource('student/subject-adddrop', 'SubjectAddDropController');
     Route::resource('student/course-complete', 'CourseCompleteController');
     Route::resource('student/student-alumni', 'StudentAlumniController');
@@ -193,6 +195,9 @@ Route::middleware(['auth:web', 'XSS', 'license'])->name('admin.')->namespace('Ad
 
 
     // Academic Routes
+    Route::resource('academic/custom-request-type', 'CustomRequestTypeController');
+    Route::resource('academic/curriculum-adjustment', 'CurriculumAdjustmentController');
+    Route::post('academic/curriculum-adjustment/{id}/status', 'CurriculumAdjustmentController@status')->name('curriculum-adjustment.status');
     Route::resource('academic/faculty', 'FacultyController');
     Route::resource('academic/program', 'ProgramController');
     Route::resource('academic/batch', 'BatchController');

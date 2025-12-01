@@ -71,7 +71,7 @@
         </li>
         @endcanany
 
-        @canany(['student-attendance-action', 'student-attendance-report', 'student-leave-manage-view', 'student-leave-manage-edit', 'student-note-create', 'student-note-view', 'student-enroll-single', 'student-enroll-group', 'student-enroll-adddrop', 'student-enroll-complete', 'student-enroll-alumni'])
+        @canany(['student-attendance-action', 'student-attendance-report', 'student-leave-manage-view', 'student-leave-manage-edit', 'student-note-create', 'student-note-view', 'student-enroll-single', 'student-enroll-group', 'student-enroll-adddrop', 'student-enroll-complete', 'student-enroll-alumni', 'academic-transition-view', 'academic-transition-create', 'tutorial-view', 'tutorial-create', 'custom-request-view', 'custom-request-create'])
         <li class="nav-item pcoded-hasmenu {{ Request::is('admin/student*') ? 'pcoded-trigger active' : '' }}">
             <a href="#!" class="nav-link">
                 <span class="pcoded-micon"><i class="fas fa-user-graduate"></i></span>
@@ -103,6 +103,18 @@
 
                 @canany(['student-note-create', 'student-note-view'])
                 <li class="{{ Request::is('admin/student/student-note*') ? 'active' : '' }}"><a href="{{ route('admin.student-note.index') }}" class="">{{ trans_choice('module_student_note', 2) }}</a></li>
+                @endcanany
+
+                @canany(['academic-transition-view', 'academic-transition-create'])
+                <li class="{{ Request::is('admin/student/academic-transition*') ? 'active' : '' }}"><a href="{{ route('admin.academic-transition.index') }}" class="">{{ trans_choice('module_academic_transition', 2) }}</a></li>
+                @endcanany
+
+                @canany(['tutorial-view', 'tutorial-create'])
+                <li class="{{ Request::is('admin/student/tutorial*') ? 'active' : '' }}"><a href="{{ route('admin.tutorial.index') }}" class="">{{ trans_choice('module_tutorial', 2) }}</a></li>
+                @endcanany
+
+                @canany(['custom-request-view', 'custom-request-create'])
+                <li class="{{ Request::is('admin/student/custom-request*') ? 'active' : '' }}"><a href="{{ route('admin.custom-request.index') }}" class="">{{ trans_choice('module_custom_request', 2) }}</a></li>
                 @endcanany
 
                 @canany(['student-enroll-single', 'student-enroll-group', 'student-enroll-adddrop', 'student-enroll-complete'])
@@ -138,7 +150,7 @@
         </li>
         @endcanany
 
-        @canany(['faculty-create', 'faculty-view', 'program-create', 'program-view', 'batch-create', 'batch-view', 'session-create', 'session-view', 'semester-create', 'semester-view', 'section-create', 'section-view', 'class-room-create', 'class-room-view', 'subject-create', 'subject-view', 'enroll-subject-create', 'enroll-subject-view'])
+        @canany(['faculty-create', 'faculty-view', 'program-create', 'program-view', 'batch-create', 'batch-view', 'session-create', 'session-view', 'semester-create', 'semester-view', 'section-create', 'section-view', 'class-room-create', 'class-room-view', 'subject-create', 'subject-view', 'enroll-subject-create', 'enroll-subject-view', 'custom-request-type-view', 'custom-request-type-create', 'curriculum-adjustment-view', 'curriculum-adjustment-create'])
         <li class="nav-item pcoded-hasmenu {{ Request::is('admin/academic*') ? 'pcoded-trigger active' : '' }}">
             <a href="#!" class="nav-link">
                 <span class="pcoded-micon"><i class="fab fa-accusoft"></i></span>
@@ -179,6 +191,14 @@
 
                 @canany(['enroll-subject-create', 'enroll-subject-view'])
                 <li class="{{ Request::is('admin/academic/enroll-subject*') ? 'active' : '' }}"><a href="{{ route('admin.enroll-subject.index') }}" class="">{{ trans_choice('module_enroll_subject', 2) }}</a></li>
+                @endcanany
+
+                @canany(['custom-request-type-view', 'custom-request-type-create'])
+                <li class="{{ Request::is('admin/academic/custom-request-type*') ? 'active' : '' }}"><a href="{{ route('admin.custom-request-type.index') }}" class="">{{ trans_choice('module_custom_request_type', 2) }}</a></li>
+                @endcanany
+
+                @canany(['curriculum-adjustment-view', 'curriculum-adjustment-create'])
+                <li class="{{ Request::is('admin/academic/curriculum-adjustment*') ? 'active' : '' }}"><a href="{{ route('admin.curriculum-adjustment.index') }}" class="">{{ trans_choice('module_curriculum_adjustment', 2) }}</a></li>
                 @endcanany
             </ul>
         </li>
@@ -828,7 +848,7 @@
         </li>
         @endcanany
 
-        @canany(['report-student-progress', 'report-subject-students', 'report-student-attendance', 'report-subject-attendance', 'report-collected-fees', 'report-student-fees', 'report-salary-paid', 'report-staff-leaves', 'report-income', 'report-expense', 'report-library', 'report-book-return', 'report-inventory', 'report-hostel', 'report-transport'])
+        @canany(['report-student-progress', 'report-subject-students', 'report-student-attendance', 'report-subject-attendance', 'report-collected-fees', 'report-student-fees', 'report-salary-paid', 'report-staff-leaves', 'report-income', 'report-expense', 'report-library', 'report-book-return', 'report-inventory', 'report-hostel', 'report-transport', 'report-teacher-performance'])
         <li class="nav-item pcoded-hasmenu {{ Request::is('admin/report*') ? 'pcoded-trigger active' : '' }}">
             <a href="#!" class="nav-link">
                 <span class="pcoded-micon"><i class="fas fa-chart-line"></i></span>
@@ -893,6 +913,10 @@
 
                 @can('report-transport')
                 <li class="{{ Request::is('admin/report/transport') ? 'active' : '' }}"><a href="{{ route('admin.report.transport') }}" class="">{{ trans_choice('module_transport_members', 1) }}</a></li>
+                @endcan
+
+                @can('report-teacher-performance')
+                <li class="{{ Request::is('admin/report/teacher-performance') ? 'active' : '' }}"><a href="{{ route('admin.report.teacher-performance') }}" class="">{{ trans_choice('module_teacher_performance_report', 1) }}</a></li>
                 @endcan
             </ul>
         </li>
