@@ -13,9 +13,9 @@ use App\Models\Session;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Grade;
-use Toastr;
-use Auth;
-use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class StudentGroupEnrollController extends Controller
 {
@@ -180,6 +180,25 @@ class StudentGroupEnrollController extends Controller
         try{
             DB::beginTransaction();
 
+            // Check section capacity before processing enrollments
+            $section = Section::find($request->section);
+            if ($section && $section->seat !== null) {
+                $enrolledCount = $section->studentEnrolls()
+                    ->where('program_id', $request->program)
+                    ->where('session_id', $request->session)
+                    ->where('semester_id', $request->semester)
+                    ->where('status', '1')
+                    ->count();
+                
+                $availableSeats = $section->seat - $enrolledCount;
+                $studentsToEnroll = count(array_filter($request->students));
+                
+                if ($availableSeats >= 0 && $studentsToEnroll > $availableSeats) {
+                    Toastr::error(__('msg_not_enough_seats', ['available' => $availableSeats, 'requested' => $studentsToEnroll]), __('msg_error'));
+                    return redirect()->back();
+                }
+            }
+
             foreach($request->students as $key => $student){
             if(!empty($student) || $student == ''){
 
@@ -189,6 +208,21 @@ class StudentGroupEnrollController extends Controller
                 // $semester_check = StudentEnroll::where('student_id', $student)->where('semester_id', $request->semester)->first();
 
                 if(!isset($duplicate_check) && !isset($session_check)){
+                    // Check if section is still available for this individual enrollment
+                    if ($section && $section->seat !== null) {
+                        $currentEnrolled = $section->studentEnrolls()
+                            ->where('program_id', $request->program)
+                            ->where('session_id', $request->session)
+                            ->where('semester_id', $request->semester)
+                            ->where('status', '1')
+                            ->count();
+                        
+                        if ($currentEnrolled >= $section->seat) {
+                            Toastr::error(__('msg_section_full'), __('msg_error'));
+                            continue;
+                        }
+                    }
+
                     // Pre Enroll Update
                     $pre_enroll = StudentEnroll::where('student_id', $student)->where('status', '1')->first();
                     if(isset($pre_enroll)){
