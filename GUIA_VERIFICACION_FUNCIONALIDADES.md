@@ -22,7 +22,7 @@
 | **Reportes de asistencia** | `/admin/student-attendance-report` | `admin.student-attendance.report` | **Estudiantes** → **Asistencia** → **Reporte** |
 | **Registro en línea de inscripciones** | `/application` | `application.index` | **Web Público** → Formulario de postulación |
 | **Gestión de Licencias** | `/admin/student-leave-manage` | `admin.student-leave-manage.index` | **Estudiantes** → **Gestión de Licencias** |
-| **Impresión de Carnet de Estudiante** | `/admin/admission/id-card` | `admin.id-card.index` | **Admisión** → **Carnet de Estudiante** |
+| **Impresión de Carnet de Estudiante** | `/admin/admission/id-card` | `admin.id-card.index` | **Admisión** → **Carnet de Estudiante** (antes "Tarjeta de Identificación") |
 | **Tránsito académico** | `/admin/student/academic-transition` | `admin.academic-transition.index` | **Estudiantes** → **Tránsito Académico** |
 | **Gestión de solicitudes personalizadas** | `/admin/student/custom-request` | `admin.custom-request.index` | **Estudiantes** → **Solicitudes Personalizadas** |
 

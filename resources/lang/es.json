@@ -142,7 +142,7 @@
 
     "module_dashboard" : "Panel de Control",
     "module_admission" : "Admisión|Admisiones",
-    "module_application" : "Solicitud|Solicitudes",
+    "module_application" : "Postulación|Postulaciones",
     "module_academic_transition" : "Tránsito Académico|Tránsitos Académicos",
     "module_tutorial" : "Tutoría|Tutorías",
     "module_custom_request" : "Solicitud Personalizada|Solicitudes Personalizadas",
@@ -155,8 +155,8 @@
     "module_transfer_in" : "Transferencia de Entrada",
     "module_transfer_out" : "Transferencia de Salida",
     "module_status_type" : "Tipo de Estado|Tipos de Estado",
-    "module_id_card" : "Tarjeta de Identificación|Tarjetas de Identificación",
-    "module_id_card_setting" : "Configuración de Tarjeta ID|Configuraciones de Tarjeta ID",
+    "module_id_card" : "Carnet de Estudiante|Carnets de Estudiante",
+    "module_id_card_setting" : "Configuración de Carnet de Estudiante|Configuraciones de Carnet de Estudiante",
 
     "module_student" : "Estudiante|Estudiantes",
     "module_student_attendance" : "Asistencia de Estudiante|Asistencias de Estudiante",
@@ -241,7 +241,7 @@
     "module_apply_leave" : "Solicitar Permiso|Solicitar Permisos",
     "module_my_leave" : "Mis Permisos|Mis Permisos",
     "module_leave_type" : "Tipo de Permiso|Tipos de Permiso",
-    "module_leave_manage" : "Gestionar Permiso|Gestionar Permisos",
+    "module_leave_manage" : "Gestión de Licencias|Gestionar Licencias",
 
     "module_income_expense" : "Cuenta|Cuentas",
     "module_income" : "Ingreso|Ingresos",
@@ -347,7 +347,7 @@
     "module_payment_setting" : "Pasarela de Pago|Pasarelas de Pago",
     "module_schedule_setting" : "Configuración de Recordatorio|Configuraciones de Recordatorio",
     "module_role" : "Rol y Permisos|Roles y Permisos",
-    "module_application_setting" : "Solicitud en Línea|Solicitudes en Línea",
+    "module_application_setting" : "Postulación en Línea|Postulaciones en Línea",
     "module_field_setting" : "Configuración de Campo|Configuraciones de Campo",
     "module_student_panel" : "Panel de Estudiante|Panel de Estudiante",
     "module_profile" : "Mi Perfil|Mi Perfil",

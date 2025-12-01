@@ -165,8 +165,8 @@
     "module_transfer_in" : "Transfer In",
     "module_transfer_out" : "Transfer Out",
     "module_status_type" : "Status Type|Status Types",
-    "module_id_card" : "ID Card|ID Cards",
-    "module_id_card_setting" : "ID Card Setting|ID Card Settings",
+    "module_id_card" : "Student ID Card|Student ID Cards",
+    "module_id_card_setting" : "Student ID Card Setting|Student ID Card Settings",
 
     "module_student" : "Student|Students",
     "module_student_attendance" : "Student Attendance|Student Attendances",
