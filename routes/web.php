@@ -455,6 +455,7 @@ Route::middleware(['auth:web', 'XSS', 'license'])->name('admin.')->namespace('Ad
     Route::get('report/payroll', 'ReportController@payroll')->name('report.payroll');
     Route::get('report/leave', 'ReportController@leave')->name('report.leave');
     Route::get('report/income', 'ReportController@income')->name('report.income');
+    Route::get('report/teacher-performance', 'ReportController@teacherPerformance')->name('report.teacher-performance');
     Route::get('report/expense', 'ReportController@expense')->name('report.expense');
     Route::get('report/library', 'ReportController@library')->name('report.library');
     Route::get('report/book-return', 'ReportController@bookReturn')->name('report.book-return');

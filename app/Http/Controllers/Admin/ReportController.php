@@ -38,6 +38,10 @@ use App\Models\Grade;
 use App\Models\Item;
 use App\Models\Book;
 use App\Models\Fee;
+use App\Models\ClassRoutine;
+use App\Models\Assignment;
+use App\Models\StaffAttendance;
+use App\Models\Tutorial;
 use Carbon\Carbon;
 use App\User;
 
@@ -72,6 +76,7 @@ class ReportController extends Controller
         $this->middleware('permission:'.$this->access.'-inventory', ['only' => ['inventory']]);
         $this->middleware('permission:'.$this->access.'-hostel', ['only' => ['hostel']]);
         $this->middleware('permission:'.$this->access.'-transport', ['only' => ['transport']]);
+        $this->middleware('permission:'.$this->access.'-teacher-performance', ['only' => ['teacherPerformance']]);
     }
 
     /**
@@ -1252,5 +1257,125 @@ class ReportController extends Controller
         $data['rows'] = $rows->orderBy('transport_route_id', 'asc')->get();
 
         return view($this->view.'.transport', $data);
+    }
+
+    /**
+     * Display teacher performance report.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function teacherPerformance(Request $request)
+    {
+        //
+        $data['title'] = trans_choice('module_teacher_performance', 1).' '.trans_choice('module_report', 1);
+        $data['route'] = $this->route;
+        $data['view'] = $this->view;
+        $data['access'] = $this->access;
+
+        if(!empty($request->teacher) || $request->teacher != null){
+            $data['selected_teacher'] = $teacher = $request->teacher;
+        }
+        else{
+            $data['selected_teacher'] = $teacher = '0';
+        }
+
+        if(!empty($request->session) || $request->session != null){
+            $data['selected_session'] = $session = $request->session;
+        }
+        else{
+            $data['selected_session'] = $session = '0';
+        }
+
+        if(!empty($request->start_date) || $request->start_date != null){
+            $data['selected_start_date'] = $start_date = $request->start_date;
+        }
+        else{
+            $data['selected_start_date'] = $start_date = date('Y-m-d', strtotime(Carbon::now()->subMonth()));
+        }
+
+        if(!empty($request->end_date) || $request->end_date != null){
+            $data['selected_end_date'] = $end_date = $request->end_date;
+        }
+        else{
+            $data['selected_end_date'] = $end_date = date('Y-m-d', strtotime(Carbon::today()));
+        }
+
+        // Search Filter
+        $data['teachers'] = User::where('status', '1')
+                            ->whereHas('roles', function($query){
+                                $query->whereIn('name', ['teacher', 'staff']);
+                            })
+                            ->orderBy('staff_id', 'asc')->get();
+        $data['sessions'] = Session::where('status', '1')->orderBy('id', 'desc')->get();
+
+        // Teacher Performance Data
+        $data['rows'] = [];
+        if(!empty($request->teacher) && $request->teacher != '0'){
+            $teacherUser = User::findOrFail($teacher);
+            
+            // Get classes taught
+            $classes = ClassRoutine::where('teacher_id', $teacher);
+            if(!empty($request->session) && $request->session != '0'){
+                $classes->where('session_id', $session);
+            }
+            $classesData = $classes->where('status', '1')->get();
+
+            // Get unique subjects
+            $subjects = $classesData->pluck('subject_id')->unique();
+            $data['subjects_count'] = $subjects->count();
+
+            // Get students assigned (through enrolls in classes)
+            $studentEnrolls = StudentEnroll::whereHas('subjects', function($query) use ($subjects){
+                $query->whereIn('subjects.id', $subjects);
+            });
+            if(!empty($request->session) && $request->session != '0'){
+                $studentEnrolls->where('session_id', $session);
+            }
+            $data['students_count'] = $studentEnrolls->where('status', '1')->distinct('student_id')->count('student_id');
+
+            // Get assignments created
+            $assignments = Assignment::where('assign_by', $teacher);
+            if(!empty($request->session) && $request->session != '0'){
+                $assignments->where('session_id', $session);
+            }
+            $data['assignments_count'] = $assignments->where('status', '1')->count();
+
+            // Get attendance records
+            $attendances = StaffAttendance::where('user_id', $teacher)
+                            ->whereDate('date', '>=', $start_date)
+                            ->whereDate('date', '<=', $end_date);
+            $totalDays = $attendances->count();
+            $presentDays = $attendances->where('attendance', '1')->count();
+            $absentDays = $attendances->where('attendance', '2')->count();
+            $data['attendance'] = [
+                'total' => $totalDays,
+                'present' => $presentDays,
+                'absent' => $absentDays,
+                'percentage' => $totalDays > 0 ? ($presentDays / $totalDays) * 100 : 0
+            ];
+
+            // Get tutorials assigned (if tutorial module exists)
+            if(class_exists('App\Models\Tutorial')){
+                $tutorials = Tutorial::where('tutor_id', $teacher)
+                                ->whereDate('date', '>=', $start_date)
+                                ->whereDate('date', '<=', $end_date);
+                $data['tutorials_count'] = $tutorials->count();
+                $data['tutorials_completed'] = $tutorials->where('status', '2')->count();
+            } else {
+                $data['tutorials_count'] = 0;
+                $data['tutorials_completed'] = 0;
+            }
+
+            // Compile teacher data
+            $data['teacher_data'] = [
+                'user' => $teacherUser,
+                'classes' => $classesData,
+                'total_classes' => $classesData->count(),
+                'subjects' => Subject::whereIn('id', $subjects)->get(),
+            ];
+        }
+
+        return view($this->view.'.teacher-performance', $data);
     }
 }
