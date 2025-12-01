@@ -14,6 +14,9 @@ use App\Models\Subject;
 use App\Models\Grade;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\SectionCapacityNotification;
+use App\User;
 use Yoeunes\Toastr\Facades\Toastr;
 
 class StudentSingleEnrollController extends Controller
@@ -179,6 +182,45 @@ class StudentSingleEnrollController extends Controller
                 $student = Student::find($request->student);
                 $student->program_id = $request->program;
                 $student->save();
+
+                // Check capacity and send notifications
+                if ($section && $section->seat !== null) {
+                    $enrolledCount = $section->studentEnrolls()
+                        ->where('program_id', $request->program)
+                        ->where('session_id', $request->session)
+                        ->where('semester_id', $request->semester)
+                        ->where('status', '1')
+                        ->count();
+                    
+                    $percentage = ($enrolledCount / $section->seat) * 100;
+                    
+                    if ($percentage >= 100 || ($percentage >= 80 && $percentage < 100)) {
+                        $program = Program::find($request->program);
+                        $session = Session::find($request->session);
+                        $semester = Semester::find($request->semester);
+                        
+                        $admins = User::where('status', '1')->role('admin')->get();
+                        
+                        if ($admins->count() > 0) {
+                            $notificationData = [
+                                'section_id' => $section->id,
+                                'section_title' => $section->title,
+                                'program_id' => $request->program,
+                                'program_title' => $program->title ?? '',
+                                'session_id' => $request->session,
+                                'session_title' => $session->title ?? '',
+                                'semester_id' => $request->semester,
+                                'semester_title' => $semester->title ?? '',
+                                'enrolled_count' => $enrolledCount,
+                                'capacity' => $section->seat,
+                                'percentage' => $percentage,
+                                'type' => $percentage >= 100 ? 'full' : 'nearly_full'
+                            ];
+                            
+                            Notification::send($admins, new SectionCapacityNotification($notificationData));
+                        }
+                    }
+                }
 
                 Toastr::success(__('msg_promoted_successfully'), __('msg_success'));
             }

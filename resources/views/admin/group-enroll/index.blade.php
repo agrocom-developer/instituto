@@ -166,12 +166,24 @@
                                 <select class="form-control next_section" name="section" id="section" required>
                                   <option value="">{{ __('select') }}</option>
                                   @foreach( $sections as $section )
-                                  <option value="{{ $section->id }}" @if( $selected_section == $section->id) selected @endif>{{ $section->title }}</option>
+                                  <option value="{{ $section->id }}" @if( $selected_section == $section->id) selected @endif
+                                      data-seat="{{ $section->seat }}"
+                                      data-available-seats="{{ $section->available_seats ?? -1 }}"
+                                      data-enrolled-count="{{ $section->enrolled_count ?? 0 }}"
+                                      data-capacity-percentage="{{ $section->capacity_percentage ?? null }}">
+                                      {{ $section->title }}
+                                      @if(isset($section->seat) && $section->seat !== null)
+                                          ({{ __('field_available_seats') }}: {{ $section->available_seats >= 0 ? $section->available_seats : __('field_unlimited') }})
+                                      @endif
+                                  </option>
                                   @endforeach
                                 </select>
 
                                 <div class="invalid-feedback">
                                   {{ __('required_field') }} {{ __('field_section') }}
+                                </div>
+                                <div id="section-capacity-info" class="mt-2">
+                                    <span id="capacity-text"></span>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
@@ -235,6 +247,39 @@ $(".all_select").on('click',function(e){
     }
 });
 
+// Update section capacity info
+function updateSectionCapacityInfo() {
+    var selectedSection = $('.next_section option:selected');
+    var availableSeats = selectedSection.data('available-seats');
+    var enrolledCount = selectedSection.data('enrolled-count');
+    var capacityPercentage = selectedSection.data('capacity-percentage');
+    var seat = selectedSection.data('seat');
+    var capacityInfoDiv = $('#section-capacity-info');
+    var capacityTextSpan = $('#capacity-text');
+
+    capacityInfoDiv.removeClass('text-success text-warning text-danger');
+    capacityTextSpan.text('');
+
+    if (seat !== undefined && seat !== null) {
+        let text = '{{ __("field_enrolled_count") }}: ' + (enrolledCount || 0) + ' / ' + seat;
+        if (capacityPercentage !== null && capacityPercentage !== undefined) {
+            text += ' (' + parseFloat(capacityPercentage).toFixed(2) + '%)';
+        }
+        capacityTextSpan.text(text);
+
+        if (capacityPercentage >= 100) {
+            capacityInfoDiv.addClass('text-danger');
+        } else if (capacityPercentage >= 80) {
+            capacityInfoDiv.addClass('text-warning');
+        } else {
+            capacityInfoDiv.addClass('text-success');
+        }
+    } else if (availableSeats === -1) {
+        capacityTextSpan.text('{{ __("field_available_seats") }}: {{ __("field_unlimited") }}');
+        capacityInfoDiv.addClass('text-success');
+    }
+}
+
 // Next Section
 $(".next_semester").on('change',function(e){
   e.preventDefault(e);
@@ -253,15 +298,23 @@ $(".next_semester").on('change',function(e){
       program: '{{ $selected_program }}'
     },
     success:function(response){
-        // var jsonData=JSON.parse(response);
         $('option', section).remove();
         $('.next_section').append('<option value="">{{ __("select") }}</option>');
         $.each(response, function(){
+          var optionText = this.title;
+          if (this.seat !== null && this.seat !== undefined) {
+            optionText += ' ({{ __("field_available_seats") }}: ' + (this.seat || '{{ __("field_unlimited") }}') + ')';
+          }
           $('<option/>', {
             'value': this.id,
-            'text': this.title
+            'text': optionText,
+            'data-seat': this.seat || null,
+            'data-available-seats': -1,
+            'data-enrolled-count': 0,
+            'data-capacity-percentage': null
           }).appendTo('.next_section');
         });
+        $('#section-capacity-info').html('<span id="capacity-text"></span>');
       }
 
   });
@@ -270,6 +323,8 @@ $(".next_semester").on('change',function(e){
 // Next Subject
 $(".next_section").on('change',function(e){
   e.preventDefault(e);
+  updateSectionCapacityInfo();
+  
   var subject=$(".next_subject");
   $.ajaxSetup({
     headers: {
@@ -286,7 +341,6 @@ $(".next_section").on('change',function(e){
       program: '{{ $selected_program }}'
     },
     success:function(response){
-        // var jsonData=JSON.parse(response);
         $.each(response, function(){
           $('.next_subject option[value='+this.id+']').attr('selected','selected');
           $('.next_subject').select2().trigger('change');
@@ -294,6 +348,13 @@ $(".next_section").on('change',function(e){
       }
 
   });
+});
+
+// Initial call on page load if a section is selected
+$(document).ready(function() {
+    if ($('#section').val()) {
+        updateSectionCapacityInfo();
+    }
 });
 </script>
 @endif
