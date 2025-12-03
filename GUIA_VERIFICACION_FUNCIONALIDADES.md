@@ -42,8 +42,8 @@
 
 | Funcionalidad | URL | Ruta Laravel | Ubicación en el Menú |
 |--------------|-----|--------------|---------------------|
-| **Registro de datos de docentes** | `/admin/user` | `admin.user.index` | **Personal** → **Usuarios** |
-| **Especialidades y asignaturas** | `/admin/user/{id}` | `admin.user.show` | **Personal** → **Usuarios** → Ver detalle (relaciones) |
+| **Registro de datos de docentes** | `/admin/staff/user` | `admin.user.index` | **Personal** → **Usuarios** |
+| **Especialidades y asignaturas** | `/admin/staff/user/{id}` | `admin.user.show` | **Personal** → **Usuarios** → Ver detalle (relaciones) |
 | **Seguimiento del desempeño docente** | `/admin/report/teacher-performance` | `admin.report.teacher-performance` | **Reportes** → **Desempeño Docente** |
 | **Asignación y seguimiento de tutorías** | `/admin/student/tutorial` | `admin.tutorial.index` | **Estudiantes** → **Tutorías** |
 
