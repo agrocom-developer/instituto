@@ -141,7 +141,8 @@
     "msg_something_went_wrong" : "¡Algo Salió Mal!",
 
     "module_dashboard" : "Panel de Control",
-    "module_admission" : "Admisión|Admisiones",
+    "module_admission" : "Admisión y Estudiantes|Admisiones y Estudiantes",
+    "module_academic_management" : "Gestión Académica|Gestión Académica",
     "module_application" : "Postulación|Postulaciones",
     "module_academic_transition" : "Tránsito Académico|Tránsitos Académicos",
     "module_tutorial" : "Tutoría|Tutorías",
@@ -182,6 +183,7 @@
     "module_enroll_subject" : "Curso Matriculado|Cursos Matriculados",
 
     "module_routine" : "Rutina|Rutinas",
+    "module_schedules" : "Horarios|Horarios",
     "module_manage_class" : "Gestionar Clase|Gestionar Clases",
     "module_class_routine" : "Horario de Clases|Horarios de Clases",
     "module_manage_exam" : "Gestionar Examen|Gestionar Exámenes",
@@ -189,6 +191,7 @@
     "module_teacher_routine" : "Rutina del Docente|Rutinas del Docente",
 
     "module_examination" : "Examen|Exámenes",
+    "module_exams_evaluation" : "Exámenes y Evaluación|Exámenes y Evaluación",
     "module_exam_attendance" : "Asistencia a Examen|Asistencias a Examen",
     "module_exam_marking" : "Registro de Calificaciones de Examen|Registros de Calificaciones de Examen",
     "module_exam_result" : "Resultado de Examen|Resultados de Examen",
@@ -207,6 +210,7 @@
     "module_download" : "Descarga|Descargas",
 
     "module_fees_collection" : "Cobro de Tarifas|Cobros de Tarifas",
+    "module_finances" : "Finanzas|Finanzas",
     "module_student_fees" : "Tarifas de Estudiante|Tarifas de Estudiante",
     "module_fees_due" : "Tarifas Pendientes|Tarifas Pendientes",
     "module_fees_quick_assign" : "Asignación Rápida|Asignaciones Rápidas",
@@ -219,7 +223,7 @@
     "module_fees_fine" : "Multa de Tarifas|Multas de Tarifas",
     "module_fees_receipt_setting" : "Configuración de Recibo|Configuraciones de Recibo",
 
-    "module_human_resource" : "Recurso Humano|Recursos Humanos",
+    "module_human_resource" : "Recursos Humanos|Recursos Humanos",
     "module_staff" : "Personal|Personal",
     "module_staff_note" : "Nota de Personal|Notas de Personal",
     "module_payroll" : "Nómina|Nóminas",
@@ -251,6 +255,7 @@
     "module_outcome_calculation" : "Resumen de Resultados|Resúmenes de Resultados",
 
     "module_communicate" : "Comunicar|Comunicaciones",
+    "module_communication" : "Comunicación|Comunicaciones",
     "module_email_notify" : "Enviar Correo|Enviar Correo",
     "module_sms_notify" : "Enviar SMS|Enviar SMS",
     "module_event" : "Evento|Eventos",
@@ -278,6 +283,7 @@
     "module_item_category" : "Categoría|Categorías",
 
     "module_hostel" : "Residencia|Residencias",
+    "module_residence" : "Residencia|Residencias",
     "module_hostel_room" : "Habitación de Residencia|Habitaciones de Residencia",
     "module_room_type" : "Tipo de Habitación|Tipos de Habitación",
 
@@ -286,6 +292,7 @@
     "module_transport_vehicle" : "Vehículo|Vehículos",
 
     "module_front_desk" : "Recepción|Recepción",
+    "module_reception" : "Recepción|Recepción",
     "module_enquiry" : "Consulta|Consultas",
     "module_enquiry_reference" : "Referencia de Consulta|Referencias de Consulta",
     "module_enquiry_source" : "Fuente de Consulta|Fuentes de Consulta",
@@ -302,6 +309,7 @@
     "module_meeting_type" : "Tipo de Reunión|Tipos de Reunión",
 
     "module_transcript" : "Transcripción|Transcripciones",
+    "module_certificates" : "Certificados|Certificados",
     "module_marksheet_total" : "Boleta Total|Boletas Totales",
     "module_marksheet_semester" : "Boleta de Semestre|Boletas de Semestre",
     "module_marksheet_setting" : "Configuración de Boleta|Configuraciones de Boleta",
@@ -323,6 +331,7 @@
     "module_transport_members" : "Miembros de Transporte",
 
     "module_front_web" : "Sitio Web|Sitio Web",
+    "module_website" : "Sitio Web|Sitio Web",
     "module_topbar_setting" : "Configuración de Contacto|Configuración de Contacto",
     "module_social_setting" : "Configuración Social|Configuración Social",
     "module_slider" : "Slider|Sliders",
